@@ -1,19 +1,21 @@
 package com.ananth.game.application;
 
+import com.ananth.game.exception.GameException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.*;
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class GameApplication {
 
+    //private static final Logger logger = LoggerFactory.getLogger(GameApplication.class);
 
     public void loadGame() {
 
-        System.out.println("----------------------------------------\n" +
-                "----------WELCOME TO THE GAME-----------\n" +
-                "----------------------------------------\n");
+
 
         // create a scanner so we can read the command-line input
         Scanner scanner = new Scanner(System.in);
@@ -36,7 +38,7 @@ public class GameApplication {
     public void openDoc() {
         //text file, should be opening in default text editor
         //File file = new File("/Users/z0019r9/test.json");
-        File file = new File("GameTutorial.html");
+        File file = new File("GameTutorial.pdf");
 
         //first check if Desktop is supported by Platform or not
         if(!Desktop.isDesktopSupported()){
@@ -50,5 +52,17 @@ public class GameApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setupGame() throws GameException {
+
+        try {
+            System.out.println( "----------------------------------------\n" +
+                                "----------WELCOME TO THE GAME-----------\n" +
+                                "----------------------------------------\n");
+        } catch (Exception exception) {
+            throw new GameException(exception);
+        }
+
     }
 }
