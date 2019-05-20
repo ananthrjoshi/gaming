@@ -3,6 +3,7 @@ package com.ananth.game.service;
 import com.ananth.game.constants.SkillSet;
 import com.ananth.game.constants.WeaponSet;
 import com.ananth.game.model.player.Fighter;
+import com.ananth.game.model.player.Character;
 import com.ananth.game.model.skills.FightingSkill;
 import com.ananth.game.model.skills.Skill;
 import com.ananth.game.model.weapon.FireBall;
@@ -42,7 +43,6 @@ public class BattleUtils {
 
         return menuOption;
     }
-
 
     /**
      * Method to initialize the fighter with the chosen weapon

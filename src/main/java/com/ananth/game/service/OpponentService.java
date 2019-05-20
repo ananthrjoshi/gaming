@@ -3,7 +3,7 @@ package com.ananth.game.service;
 import com.ananth.game.application.GameApplication;
 import com.ananth.game.model.game.Battle;
 import com.ananth.game.model.player.Fighter;
-import com.ananth.game.model.player.Player;
+import com.ananth.game.model.player.Character;
 
 public class OpponentService {
 
@@ -17,7 +17,7 @@ public class OpponentService {
         this.battle = battle;
     }
 
-    public Player createOpponent() {
+    public Character createOpponent() {
         Fighter opponent = new Fighter();
         opponent.setPlayerName("SYSTEM");
 

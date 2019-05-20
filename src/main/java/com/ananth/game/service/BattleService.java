@@ -2,7 +2,7 @@ package com.ananth.game.service;
 
 import com.ananth.game.constants.PlayerType;
 import com.ananth.game.model.game.Battle;
-import com.ananth.game.model.player.Player;
+import com.ananth.game.model.player.Character;
 
 public class BattleService {
 
@@ -14,8 +14,8 @@ public class BattleService {
 
     public void battleItOut(Battle battle) {
         if(battle != null) {
-            Player user = battle.getPlayerMap().get(PlayerType.USER.getPlayerType());
-            Player opponent = battle.getPlayerMap().get(PlayerType.OPPONENT.getPlayerType());
+            Character user = battle.getPlayerMap().get(PlayerType.USER.getPlayerType());
+            Character opponent = battle.getPlayerMap().get(PlayerType.OPPONENT.getPlayerType());
 
             user.attack(opponent);
         }

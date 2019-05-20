@@ -1,7 +1,7 @@
 package com.ananth.game.model.game;
 
 import com.ananth.game.constants.GameStage;
-import com.ananth.game.model.player.Player;
+import com.ananth.game.model.player.Character;
 import com.ananth.game.service.BattleInitService;
 import com.ananth.game.service.BattleService;
 
@@ -10,17 +10,17 @@ import java.util.Map;
 
 public class Battle implements Game,Runnable {
 
-    private Map<String,Player> playerMap;
+    private Map<String,Character> playerMap;
     private String gameStage;
 
-    public Map<String, Player> getPlayerMap() {
+    public Map<String, Character> getPlayerMap() {
         if(playerMap == null) {
             playerMap = new HashMap<>();
         }
         return playerMap;
     }
 
-    public void setPlayerMap(Map<String, Player> playerMap) {
+    public void setPlayerMap(Map<String, Character> playerMap) {
         this.playerMap = playerMap;
     }
 

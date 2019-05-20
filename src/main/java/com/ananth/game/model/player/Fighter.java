@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Fighter extends Player {
+public class Fighter implements Character {
 
     private String playerName;
 
@@ -93,7 +93,7 @@ public class Fighter extends Player {
         this.skillSetMap = skillSetMap;
     }
 
-    public void attack(Player opponent){
+    public void attack(Character opponent){
         System.out.println(this.getPlayerName() + " attacks " + opponent.getPlayerName());
     }
 

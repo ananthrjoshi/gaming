@@ -2,10 +2,7 @@ package com.ananth.game.service;
 
 import com.ananth.game.constants.PlayerType;
 import com.ananth.game.model.game.Battle;
-import com.ananth.game.model.player.Fighter;
-import com.ananth.game.model.player.Player;
-
-import java.util.Scanner;
+import com.ananth.game.model.player.Character;
 
 public class BattleInitService {
 
@@ -24,8 +21,8 @@ public class BattleInitService {
     }
 
     public void setup() {
-        Player user = createCharacter();
-        Player opponent = createOpponent();
+        Character user = chooseCharacter();
+        Character opponent = createOpponent();
 
         System.out.println("USER: " + user.toString());
         System.out.println("OPPONENT: " + opponent.toString());
@@ -35,34 +32,18 @@ public class BattleInitService {
         //System.out.println(battle);
     }
 
-    private Player createOpponent() {
+    private Character createOpponent() {
         return new OpponentService().createOpponent();
     }
 
-    private Player createCharacter() {
+    private Character chooseCharacter() {
         System.out.println("=====================================");
-        System.out.println("|   CREATE A FIGHTER (CHARACTER)    |");
+        System.out.println("|   CHOOSE A FIGHTER (CHARACTER)    |");
         System.out.println("=====================================");
 
-        Player player = new Fighter();
-        System.out.println("NAME YOUR FIGHTER: ");
-        player.setPlayerName(characterName());
-
-        System.out.println("CHOOSE THE WEAPON FROM THE FOLLOWING LIST:");
+        System.out.println("CHOOSE A CHARACTER FROM THE FOLLOWING LIST:");
         //method that shows menu options
-        int option = BattleUtils.showWeaponOptions();
-
-        BattleUtils.initializeFighterWithWeapon((Fighter)player,option);
-
-        return player;
+        int option = CharacterUtils.showCharacterOptions();
+        return CharacterUtils.createCharacter(option);
     }
-
-
-    private String characterName() {
-        // create a scanner so we can read the command-line input
-        Scanner scanner = new Scanner(System.in);
-        return scanner.next();
-    }
-
-
 }
