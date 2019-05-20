@@ -4,7 +4,8 @@ public enum WeaponSet {
 
     FIREBALL("FIREBALL"),
     GUN("GUN"),
-    SWORD("SWORD");
+    SWORD("SWORD"),
+    SHIELD("SHIELD");
 
     private String weaponName;
     WeaponSet(String weaponName) {
