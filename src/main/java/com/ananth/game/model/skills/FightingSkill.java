@@ -25,7 +25,7 @@ public class FightingSkill implements Skill {
     @Override
     public String toString() {
         return "FightingSkill{" +
-                "weaponMap=" + weaponMap +
+                "weaponMap: " + weaponMap +
                 '}';
     }
 }

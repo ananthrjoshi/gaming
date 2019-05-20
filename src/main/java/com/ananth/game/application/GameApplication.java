@@ -1,20 +1,12 @@
 package com.ananth.game.application;
 
-import com.ananth.game.constants.GameStage;
 import com.ananth.game.exception.GameException;
-import com.ananth.game.model.game.FightGame;
-import com.ananth.game.model.game.Game;
+import com.ananth.game.model.game.Battle;
 import com.ananth.game.ui.GameGUI;
-import com.sun.tools.javah.Util;
 
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class GameApplication {
 
@@ -22,6 +14,9 @@ public class GameApplication {
 
     //This property is used to setup the GUI for the application
     private GameGUI gameGUI;
+
+    //Used to generate random numbers and can be used throughout the application
+    public final static Random random = new Random();
 
     public GameGUI getGameGUI() {
         return gameGUI;
@@ -31,11 +26,18 @@ public class GameApplication {
         this.gameGUI = gameGUI;
     }
 
+    public static Random getRandom() {
+        return random;
+    }
+
+    /**
+     * This method is used to load the battle game and start the game
+     */
     private void loadGame() {
 
         ExecutorService executor = Executors.newFixedThreadPool(1);
-        FightGame fightGame = new FightGame();
-        executor.execute(fightGame);
+        Battle battle = new Battle();
+        executor.execute(battle);
         executor.shutdown();
         while (!executor.isTerminated()) { }
 

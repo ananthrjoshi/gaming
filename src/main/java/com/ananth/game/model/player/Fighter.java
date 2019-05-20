@@ -94,7 +94,7 @@ public class Fighter extends Player {
     }
 
     public void attack(Player opponent){
-
+        System.out.println(this.getPlayerName() + " attacks " + opponent.getPlayerName());
     }
 
     public void train() {

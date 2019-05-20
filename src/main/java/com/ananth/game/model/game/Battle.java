@@ -2,13 +2,13 @@ package com.ananth.game.model.game;
 
 import com.ananth.game.constants.GameStage;
 import com.ananth.game.model.player.Player;
+import com.ananth.game.service.BattleInitService;
+import com.ananth.game.service.BattleService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class FightGame implements Game,Runnable {
+public class Battle implements Game,Runnable {
 
     private Map<String,Player> playerMap;
     private String gameStage;
@@ -36,9 +36,11 @@ public class FightGame implements Game,Runnable {
     public void start() {
         gameStage = GameStage.GAME_START.getStage();
         System.out.println("Game Started");
-        FightGameStartService fightGameStartService = new FightGameStartService(this);
-        fightGameStartService.setup();
+        BattleInitService battleInitService = new BattleInitService(this);
+        battleInitService.setup();
 
+        BattleService battleService = new BattleService(this);
+        battleService.battleItOut(this);
     }
 
     @Override
@@ -53,7 +55,6 @@ public class FightGame implements Game,Runnable {
 
     @Override
     public void save() {
-
     }
 
     @Override
@@ -80,9 +81,9 @@ public class FightGame implements Game,Runnable {
 
     @Override
     public String toString() {
-        return "FightGame{" +
-                "playerMap=" + playerMap +
-                ", gameStage='" + gameStage + '\'' +
+        return "Game is being played between \n {" +
+                "Players: " + playerMap +
+                ", Stage: '" + gameStage + '\'' +
                 '}';
     }
 }

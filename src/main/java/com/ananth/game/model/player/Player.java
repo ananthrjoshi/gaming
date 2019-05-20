@@ -12,6 +12,10 @@ public abstract class Player {
         this.playerName = playerName;
     }
 
+    public void attack(Player opponent) {
+
+    }
+
     @Override
     public String toString() {
         return "Player{" +
