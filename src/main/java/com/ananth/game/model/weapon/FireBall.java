@@ -1,6 +1,6 @@
 package com.ananth.game.model.weapon;
 
-public class FireBall implements Weapon {
+public class FireBall extends Weapon {
 
     @Override
     public void hit() {

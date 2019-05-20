@@ -3,10 +3,12 @@ package com.ananth.game.model.player;
 import com.ananth.game.constants.PlayerConstants;
 import com.ananth.game.model.skills.Skill;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-public class Fighter implements Player {
+public class Fighter extends Player {
 
     private String playerName;
 
@@ -25,7 +27,7 @@ public class Fighter implements Player {
     //metric property that holds the experience factor of the player (initially it is assigned to 10)
     private int experience = PlayerConstants.MAX_EXPERIENCE;
 
-    private List<Skill> skillList;
+    private Map<String,List<Skill>> skillSetMap;
 
     public String getPlayerName() {
         return playerName;
@@ -80,12 +82,15 @@ public class Fighter implements Player {
         this.experience = experience;
     }
 
-    public List<Skill> getSkillList() {
-        return skillList;
+    public Map<String, List<Skill>> getSkillSetMap() {
+        if(skillSetMap == null) {
+            skillSetMap = new HashMap<>();
+        }
+        return skillSetMap;
     }
 
-    public void setSkillList(List<Skill> skillList) {
-        this.skillList = skillList;
+    public void setSkillSetMap(Map<String, List<Skill>> skillSetMap) {
+        this.skillSetMap = skillSetMap;
     }
 
     public void attack(Player opponent){
@@ -94,5 +99,18 @@ public class Fighter implements Player {
 
     public void train() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Fighter{" +
+                "playerName='" + playerName + '\'' +
+                ", isAlive=" + isAlive +
+                ", attackPower=" + attackPower +
+                ", defensePower=" + defensePower +
+                ", health=" + health +
+                ", experience=" + experience +
+                ", skillSetMap=" + skillSetMap +
+                '}';
     }
 }

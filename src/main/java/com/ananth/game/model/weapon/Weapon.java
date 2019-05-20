@@ -1,7 +1,17 @@
 package com.ananth.game.model.weapon;
 
-public interface Weapon {
+public class Weapon {
 
-    int power = 100;
-    void hit();
+    protected int WEAPON_MAX_POWER = 100;
+
+    void hit() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "WEAPON_MAX_POWER=" + WEAPON_MAX_POWER +
+                '}';
+    }
 }

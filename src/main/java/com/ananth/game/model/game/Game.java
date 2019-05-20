@@ -6,6 +6,8 @@ public interface Game {
 
     void resume();
 
+    void pause();
+
     void save();
 
     void exit();
