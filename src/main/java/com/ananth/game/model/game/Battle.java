@@ -44,6 +44,9 @@ public class Battle implements Game,Runnable,Serializable {
         BattleInitService battleInitService = new BattleInitService(this);
         battleInitService.setup();
 
+        BattleUtils.logConsole("===============\n"
+                                +"Battle it Out\n");
+
         BattleService battleService = new BattleService(this);
         battleService.battleItOut(this);
     }
@@ -105,7 +108,6 @@ public class Battle implements Game,Runnable,Serializable {
     @Override
     public void run() {
         start();
-        BattleUtils.logConsole("Do you want to save this Game?");
         // create a scanner so we can read the command-line input
         int menuOption = BattleUtils.chooseSaveGameOption();
         if(menuOption == 1) {

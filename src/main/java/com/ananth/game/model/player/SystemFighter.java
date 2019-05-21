@@ -21,6 +21,7 @@ public class SystemFighter extends Fighter{
     public void attack(Character opponent) {
         if(this.isAlive() && opponent.isAlive()) {
             //both are alive
+            BattleUtils.logConsole("============================================");
             BattleUtils.logConsole(this.getPlayerName() + " attacks " + opponent.getPlayerName());
             this.gainFightExperience(PlayerConstants.FIGHT_ACT_ATTACK);
 
@@ -30,6 +31,7 @@ public class SystemFighter extends Fighter{
             } else {
                 //opponent lost
                 BattleUtils.logConsole(opponent.getPlayerName() + " is dead");
+                BattleUtils.logConsole("============================================");
                 opponent.setHealth(0);
             }
         }

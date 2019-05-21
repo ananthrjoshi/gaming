@@ -45,6 +45,7 @@ public class CaptainAmerica extends Fighter{
     public void attack(Character opponent) {
         if(this.isAlive() && opponent.isAlive()) {
             //both are alive
+            BattleUtils.logConsole("============================================");
             BattleUtils.logConsole(this.getPlayerName() + " attacks " + opponent.getPlayerName());
             this.gainFightExperience(PlayerConstants.FIGHT_ACT_ATTACK);
 
@@ -53,6 +54,7 @@ public class CaptainAmerica extends Fighter{
                 opponent.gainFightExperience(PlayerConstants.FIGHT_ACT_DEFEND);
             } else {
                 //opponent lost
+                BattleUtils.logConsole("============================================");
                 BattleUtils.logConsole(opponent.getPlayerName() + " is dead");
                 opponent.setHealth(0);
             }

@@ -57,7 +57,6 @@ public class BattleUtils {
         System.out.println("| Options:                 |");
         System.out.println("|        1. FIREBALL       |");
         System.out.println("|        2. GUN            |");
-        System.out.println("|        3. SWORD          |");
         System.out.println("============================");
 
         // create a scanner so we can read the command-line input
