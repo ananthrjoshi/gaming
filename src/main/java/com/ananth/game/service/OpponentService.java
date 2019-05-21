@@ -4,6 +4,7 @@ import com.ananth.game.application.GameApplication;
 import com.ananth.game.model.game.Battle;
 import com.ananth.game.model.player.Fighter;
 import com.ananth.game.model.player.Character;
+import com.ananth.game.model.player.SystemFighter;
 
 public class OpponentService {
 
@@ -18,13 +19,8 @@ public class OpponentService {
     }
 
     public Character createOpponent() {
-        Fighter opponent = new Fighter();
-        opponent.setPlayerName("SYSTEM");
-
-        //randomly choose the weapon to be added to the SYSTEM opponent
-        int randomOption = GameApplication.getRandom().nextInt(1)+1;
-        BattleUtils.initializeFighterWithWeapon(opponent,randomOption);;
-
+        SystemFighter opponent = new SystemFighter("SYSTEM");
+        opponent.initialize();
         return opponent;
     }
 }

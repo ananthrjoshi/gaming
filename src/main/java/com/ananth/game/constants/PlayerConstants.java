@@ -8,4 +8,7 @@ public interface PlayerConstants {
     int INITIAL_DEFENSE_POWER = 100;
     int MAX_EXPERIENCE = 10;
 
+    String FIGHT_ACT_ATTACK = "FIGHT_ACT_ATTACK";
+    String FIGHT_ACT_DEFEND = "FIGHT_ACT_DEFEND";
+
 }

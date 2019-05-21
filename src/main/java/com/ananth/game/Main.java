@@ -10,7 +10,7 @@ public class Main {
         GameApplication gameApplication = new GameApplication();
         try {
             gameApplication.setGameGUI(new GameGUI());
-            gameApplication.initalizeGameApplication();
+            gameApplication.initializeGameApplication();
         } catch (GameException e) {
             e.printStackTrace();
         }

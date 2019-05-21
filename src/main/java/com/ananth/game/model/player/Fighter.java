@@ -1,14 +1,16 @@
 package com.ananth.game.model.player;
 
+import com.ananth.game.application.GameApplication;
 import com.ananth.game.constants.PlayerConstants;
 import com.ananth.game.model.skills.Skill;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class Fighter implements Character {
+public abstract class Fighter implements Character,Serializable {
 
     private String playerName;
 
@@ -24,10 +26,24 @@ public class Fighter implements Character {
     //metric property that holds the health factor of the player (initially it is assigned to 100)
     private double health = PlayerConstants.MAX_HEALTH;
 
-    //metric property that holds the experience factor of the player (initially it is assigned to 10)
-    private int experience = PlayerConstants.MAX_EXPERIENCE;
+    //metric property that holds the experience factor of the player (initially it is assigned to 0)
+    private int experience = 0;
+
+    private static Map<String,Integer> fightExperience = new HashMap<>();
+
+    //initialize the experience to a random value
+    static {
+        fightExperience.put(PlayerConstants.FIGHT_ACT_ATTACK,
+                PlayerConstants.MAX_EXPERIENCE/ GameApplication.getRandom().nextInt(100)+1);
+        fightExperience.put(PlayerConstants.FIGHT_ACT_DEFEND,
+                PlayerConstants.MAX_EXPERIENCE/ GameApplication.getRandom().nextInt(50)+1);
+    }
 
     private Map<String,List<Skill>> skillSetMap;
+
+    public Map<String, Integer> getFightExperience() {
+        return fightExperience;
+    }
 
     public String getPlayerName() {
         return playerName;
@@ -44,10 +60,6 @@ public class Fighter implements Character {
      */
     public Boolean isAlive() {
         return health > 0;
-    }
-
-    public void setAlive(Boolean alive) {
-        isAlive = alive;
     }
 
     public int getAttackPower() {
@@ -82,6 +94,10 @@ public class Fighter implements Character {
         this.experience = experience;
     }
 
+    public Fighter(String playerName) {
+        this.playerName = playerName;
+    }
+
     public Map<String, List<Skill>> getSkillSetMap() {
         if(skillSetMap == null) {
             skillSetMap = new HashMap<>();
@@ -93,12 +109,23 @@ public class Fighter implements Character {
         this.skillSetMap = skillSetMap;
     }
 
-    public void attack(Character opponent){
-        System.out.println(this.getPlayerName() + " attacks " + opponent.getPlayerName());
+    public void gainFightExperience(String fightAct) {
+        int newExperience  = fightExperience.get(fightAct);
+        this.experience = Math.min(experience + newExperience,PlayerConstants.MAX_EXPERIENCE);
     }
 
-    public void train() {
+    public void reduceHealth(int attackPower,int opponentDefensePower) {
 
+    }
+
+    /**
+     * This method is used to check if player can defend the attack or not
+     * @param opponentAttackPower opponents attack power
+     * @return true if player is able to defend, false otherwise
+     */
+    public Boolean defend(int opponentAttackPower) {
+        setDefensePower(this.defensePower--);
+        return defensePower > opponentAttackPower;
     }
 
     @Override

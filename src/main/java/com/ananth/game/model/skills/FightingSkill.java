@@ -2,11 +2,12 @@ package com.ananth.game.model.skills;
 
 import com.ananth.game.model.weapon.Weapon;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FightingSkill implements Skill {
+public class FightingSkill implements Skill,Serializable {
 
     private Map<String,List<Weapon>> weaponMap;
 

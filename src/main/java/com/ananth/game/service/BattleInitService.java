@@ -21,6 +21,9 @@ public class BattleInitService {
     }
 
     public void setup() {
+
+        //int menuOptions = BattleUtils.showGameStageOptions();
+
         Character user = chooseCharacter();
         Character opponent = createOpponent();
 

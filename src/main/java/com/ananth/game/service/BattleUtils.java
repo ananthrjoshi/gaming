@@ -3,7 +3,6 @@ package com.ananth.game.service;
 import com.ananth.game.constants.SkillSet;
 import com.ananth.game.constants.WeaponSet;
 import com.ananth.game.model.player.Fighter;
-import com.ananth.game.model.player.Character;
 import com.ananth.game.model.skills.FightingSkill;
 import com.ananth.game.model.skills.Skill;
 import com.ananth.game.model.weapon.FireBall;
@@ -15,6 +14,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BattleUtils {
+
+
+    /**
+     * Methos shows the game menu options and returns the chosen option number
+     * @return integer
+     */
+    public static int showGameStageOptions() {
+        // Display menu
+        System.out.println("=================================");
+        System.out.println("|   GAME STAGE MENU SELECTION    |");
+        System.out.println("=================================");
+        System.out.println("| Options:                       |");
+        System.out.println("|        1. START                |");
+        System.out.println("|        2. PAUSE                |");
+        System.out.println("|        3. RESUME               |");
+        System.out.println("|        3. STOP                 |");
+        System.out.println("=================================");
+
+        // create a scanner so we can read the command-line input
+        Scanner scanner = new Scanner(System.in);
+
+        int menuOption = 0;
+        try {
+            menuOption = scanner.nextInt();
+        } catch (Exception exception) {
+            //log the error
+        }
+
+        return menuOption;
+    }
 
     /**
      * Methos shows the weapon menu options and returns the chosen option number
@@ -114,5 +143,27 @@ public class BattleUtils {
         }
         skillList.add(fightingSkill);
         fighter.getSkillSetMap().put(SkillSet.FIGHTING.getSkillName(),skillList);
+    }
+
+    public static void logConsole(String log) {
+        System.out.println(log);
+    }
+
+    public static int chooseSaveGameOption() {
+        BattleUtils.logConsole("Do you wish to save this Game?");
+        System.out.println("============================");
+        System.out.println("| Options:                 |");
+        System.out.println("|        1. YES            |");
+        System.out.println("|        2. NO             |");
+        System.out.println("============================");
+        Scanner scanner = new Scanner(System.in);
+
+        int menuOption = 0;
+        try {
+            menuOption = scanner.nextInt();
+        } catch (Exception exception) {
+            //log the error
+        }
+        return menuOption;
     }
 }

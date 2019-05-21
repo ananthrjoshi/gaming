@@ -2,9 +2,11 @@ package com.ananth.game.application;
 
 import com.ananth.game.exception.GameException;
 import com.ananth.game.model.game.Battle;
+import com.ananth.game.service.BattleUtils;
 import com.ananth.game.ui.GameGUI;
 
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,7 +18,7 @@ public class GameApplication {
     private GameGUI gameGUI;
 
     //Used to generate random numbers and can be used throughout the application
-    public final static Random random = new Random();
+    private final static Random random = new Random();
 
     public GameGUI getGameGUI() {
         return gameGUI;
@@ -41,13 +43,19 @@ public class GameApplication {
         executor.shutdown();
         while (!executor.isTerminated()) { }
 
+        try {
+            initializeGameApplication();
+        } catch (GameException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
      * This method is used to initialize the Game application
      * @throws GameException exception
      */
-    public void initalizeGameApplication() throws GameException {
+    public void initializeGameApplication() throws GameException {
         try {
             boolean isGameStarted = false;
             //method that shows menu options

@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class GameGUI {
 
-    public int showMenuOptions() {
-
+    public GameGUI() {
         System.out.println( "----------------------------------------\n" +
-                            "----------WELCOME TO THE GAME-----------\n" +
-                            "----------------------------------------\n");
+                "----------WELCOME TO THE GAME-----------\n" +
+                "----------------------------------------\n");
+    }
 
+    public int showMenuOptions() {
         // Display menu
         System.out.println("============================");
         System.out.println("|   GAME MENU SELECTION    |");

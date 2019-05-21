@@ -17,7 +17,11 @@ public class BattleService {
             Character user = battle.getPlayerMap().get(PlayerType.USER.getPlayerType());
             Character opponent = battle.getPlayerMap().get(PlayerType.OPPONENT.getPlayerType());
 
-            user.attack(opponent);
+            while(user.isAlive() && opponent.isAlive()) {
+                user.attack(opponent);
+                opponent.attack(user);
+            }
+
         }
     }
 }

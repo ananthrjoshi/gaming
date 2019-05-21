@@ -2,11 +2,12 @@ package com.ananth.game.service;
 
 import com.ananth.game.constants.SkillSet;
 import com.ananth.game.constants.WeaponSet;
+import com.ananth.game.model.player.CaptainAmerica;
 import com.ananth.game.model.player.Character;
+import com.ananth.game.model.player.CustomFighter;
 import com.ananth.game.model.player.Fighter;
 import com.ananth.game.model.skills.FightingSkill;
 import com.ananth.game.model.skills.Skill;
-import com.ananth.game.model.weapon.FireBall;
 import com.ananth.game.model.weapon.Shield;
 import com.ananth.game.model.weapon.Weapon;
 
@@ -85,41 +86,20 @@ public class CharacterUtils {
         System.out.println("|   CREATE A FIGHTER (CHARACTER)    |");
         System.out.println("=====================================");
 
-        Fighter fighter = new Fighter();
         System.out.println("NAME YOUR FIGHTER: ");
-        fighter.setPlayerName(characterName());
+        CustomFighter customFighter = new CustomFighter(characterName());
 
-        System.out.println("CHOOSE THE WEAPON FROM THE FOLLOWING LIST:");
-        //method that shows menu options
-        int option = BattleUtils.showWeaponOptions();
+        //initialize this character
+        customFighter.initialize();
 
-        BattleUtils.initializeFighterWithWeapon((Fighter)fighter,option);
-
-        return fighter;
+        return customFighter;
     }
 
     private static Character createCaptainAmericaCharacter() {
-        Fighter captainAmerica = new Fighter();
-        captainAmerica.setPlayerName("CAPTAIN AMERICA");
+        CaptainAmerica captainAmerica = new CaptainAmerica("CAPTAIN AMERICA");
 
-        //create a new weapon
-        Weapon shield = new Shield();
-
-        //add this weapon to the list of weapons
-        List<Weapon> weaponList = new ArrayList<>();
-        weaponList.add(shield);
-
-        //add new fighting skill
-        FightingSkill fightingSkill = new FightingSkill();
-        fightingSkill.getWeaponMap().put(WeaponSet.SHIELD.getWeaponName(),weaponList);
-
-        List<Skill> skillList = captainAmerica.getSkillSetMap().get(SkillSet.FIGHTING.getSkillName());
-
-        if(skillList == null) {
-            skillList = new ArrayList<>();
-        }
-        skillList.add(fightingSkill);
-        captainAmerica.getSkillSetMap().put(SkillSet.FIGHTING.getSkillName(),skillList);
+        //initialize this character
+        captainAmerica.initialize();
 
         return captainAmerica;
     }

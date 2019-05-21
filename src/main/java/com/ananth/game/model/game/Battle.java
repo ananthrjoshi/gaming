@@ -4,11 +4,16 @@ import com.ananth.game.constants.GameStage;
 import com.ananth.game.model.player.Character;
 import com.ananth.game.service.BattleInitService;
 import com.ananth.game.service.BattleService;
+import com.ananth.game.service.BattleUtils;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
-public class Battle implements Game,Runnable {
+public class Battle implements Game,Runnable,Serializable {
 
     private Map<String,Character> playerMap;
     private String gameStage;
@@ -46,15 +51,39 @@ public class Battle implements Game,Runnable {
     @Override
     public void resume() {
         gameStage = GameStage.GAME_RESUME.getStage();
+        Thread.currentThread().notify();
     }
 
     @Override
     public void pause() {
         gameStage = GameStage.GAME_PAUSE.getStage();
+        try {
+            Thread.currentThread().wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void save() {
+        try{
+            System.out.println("Saving the game data...");
+            // Open a file to write to.
+            FileOutputStream saveFile=new FileOutputStream("BattleState_"+System.currentTimeMillis()+".sav");
+
+            // Create an ObjectOutputStream to put objects into save file.
+            ObjectOutputStream save = new ObjectOutputStream(saveFile);
+
+            // Now we do the save.
+            save.writeObject(this);
+
+            // Close the file.
+            save.close(); // This also closes saveFile.
+        }
+        catch(Exception exc){
+            // If there was an error, print the info.
+            exc.printStackTrace();
+        }
     }
 
     @Override
@@ -76,6 +105,13 @@ public class Battle implements Game,Runnable {
     @Override
     public void run() {
         start();
+        BattleUtils.logConsole("Do you want to save this Game?");
+        // create a scanner so we can read the command-line input
+        int menuOption = BattleUtils.chooseSaveGameOption();
+        if(menuOption == 1) {
+            save();
+        }
+        exit();
     }
 
 

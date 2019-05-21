@@ -1,6 +1,8 @@
 package com.ananth.game.model.weapon;
 
-public abstract class Weapon {
+import java.io.Serializable;
+
+public abstract class Weapon implements Serializable{
 
     void hit() {
 

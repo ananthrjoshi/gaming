@@ -22,5 +22,11 @@ public class Shield extends Weapon{
         this.quantity = quantity;
     }
 
-
+    @Override
+    public String toString() {
+        return "Shield{" +
+                "maxPower=" + maxPower +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
