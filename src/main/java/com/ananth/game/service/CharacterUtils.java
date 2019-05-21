@@ -1,18 +1,9 @@
 package com.ananth.game.service;
 
-import com.ananth.game.constants.SkillSet;
-import com.ananth.game.constants.WeaponSet;
 import com.ananth.game.model.player.CaptainAmerica;
 import com.ananth.game.model.player.Character;
 import com.ananth.game.model.player.CustomFighter;
-import com.ananth.game.model.player.Fighter;
-import com.ananth.game.model.skills.FightingSkill;
-import com.ananth.game.model.skills.Skill;
-import com.ananth.game.model.weapon.Shield;
-import com.ananth.game.model.weapon.Weapon;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class CharacterUtils {
