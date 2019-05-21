@@ -15,9 +15,7 @@ public class CharacterUtils {
         System.out.println("==============================");
         System.out.println("| Options:                    |");
         System.out.println("| 1. CAPTAIN AMERICA          |");
-        System.out.println("| 2. B                        |");
-        System.out.println("| 3. C                        |");
-        System.out.println("| 4. Create your own character|");
+        System.out.println("| 2. Create your own character|");
         System.out.println("==============================");
 
         // create a scanner so we can read the command-line input
@@ -48,13 +46,6 @@ public class CharacterUtils {
                         isCharacterCreated = true;
                         break;
                     case 2:
-
-                        isCharacterCreated = true;
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
                         character = createCharacter();
                         isCharacterCreated = true;
                         break;
