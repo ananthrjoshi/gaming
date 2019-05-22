@@ -32,3 +32,7 @@ Build path: build/libs/gaming-1.0.jar
 
 Run command: java -jar build/libs/gaming-1.0.jar 
 
+
+**Model**
+
+![alt text](https://github.com/ananthrjoshi/gaming/blob/master/screenshots/diagrams/Player-package.jpg)
