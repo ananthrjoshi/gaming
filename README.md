@@ -17,6 +17,10 @@
 **Guidelines to run the application**
 
 Build tool: gradle
+
 Command to build the jar: gradle clean build
+
 Build path: build/libs/gaming-1.0.jar
+
 Run command: java -jar build/libs/gaming-1.0.jar 
+
