@@ -33,6 +33,10 @@ Build path: build/libs/gaming-1.0.jar
 Run command: java -jar build/libs/gaming-1.0.jar 
 
 
+**Data Model**
+
+![alt text](https://github.com/ananthrjoshi/gaming/blob/master/screenshots/diagrams/Model.jpg)
+
 **UML Diagrams**
 
 **Player package**
